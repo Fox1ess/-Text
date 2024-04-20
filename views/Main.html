@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="/aaa/img/toplogo.png">
+    <title>Fox医药购物网站</title>
+    <style>
+        * {
+            margin: 0 auto 0;
+            padding: 0;
+
+        }
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            position: relative;
+            background-color: #ffdd41;
+            background-image: linear-gradient(to bottom, #ffdd41, #4ccf72);
+            transition: background-color 0.5s, background-image 0.5s, color 0.5s;
+            /* 设置整个页面的过渡效果 */
+        }
+        body.dark-mode {
+            background-color: rgba(49, 49, 49, 0.63);
+            background-image: linear-gradient(to bottom, rgba(49, 49, 49, 0.63), rgba(59, 236, 182, 0.08));
+            color: #ffffff;
+        }        /* 夜间模式下的样式 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #333;
+            padding: 10px 0;
+            text-align: center;
+            color: #d13636;
+            Z-index:10;
+            transition: top 0.3s;
+            /*↑过渡效果的持续时间为0.x秒*/
+        }
+        .dark-mode-toggle {
+
+            width: 50px;
+            height: 50px;
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            background-color: #333;
+            color: #fff;
+            border-radius: 25px;
+            cursor: pointer;
+            z-index: 10;
+            line-height: 50px;
+            text-align: center;
+
+        }
+        .dark-mode-toggle:hover {
+            background: #555;
+        }
+        .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50px;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            line-height: 50px;
+            cursor: pointer;
+            display: none;
+            z-index:10
+        }
+        .login-button{
+            width: 40px;
+            height:30px;
+            right:0px;
+            display: inline-block;
+            position: absolute;
+        }
+        .theme {
+            height: 100vh;
+            width:1450px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 40px;
+            margin: 50px auto 0px;
+            padding: 0;
+            border-radius: 100px;
+            z-index:2;
+        }
+        #theme1 { background-color: rgba(23, 23, 23, 0.65); }
+        .Picture{
+            height: 150px;
+            width: 150px;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0);
+            position: absolute;
+            Z-index:3;
+            transition:all 100s;
+
+
+        }
+        #Picture1{top:-340px;position:relative}
+        .Pictures{transition: transform 0.3s ease-in-out;
+        }
+        .Pictures.right {transform: translateX(120px) ;
+        }
+        .ThemePrice{
+            top: -120px;
+            right:0px;
+            position:relative;
+            text-decoration: none;
+            color: rgba(239, 236, 236, 0.56);
+            font-size: 30px;
+        }
+        .Main{
+            height: 500px;
+            width: 1000px;
+            z-index: 3;
+            background:linear-gradient(to right, rgba(131, 134, 131, 0.50), rgba(49, 48, 47, 0.50));
+            display: flex;
+            top:200px;
+            position: center;
+            border-radius: 25px;
+        }
+    </style>
+</head>
+<body>
+<div class="navbar">
+    <strong>Fox医药购物网站</strong>
+    <div class="login-button"><a href="/Login"><img src="/aaa/img/Login.png" alt="" style="height: 30px;width: 30px" ></a></div>
+</div>
+<div id="theme1" class="theme">
+    <div id="Picture1" class="Picture"><img class="Pictures" src="/aaa/img/zhongyao.png" alt="" style="height: 150px;width: 150px;border-radius:50px ;left: 150px;position: relative ;z-index: 2">
+        <a class="ThemePrice" href="" ><strong>购买界面—— 红 枣</strong></a>
+    </div>
+    <div class="Main">
+        <div style="height: 410px;width: 870px;position: relative  ;margin: auto">
+            <div style="height: 400px;width:420px;position: relative  ;display: inline-block">
+                <div style="height: 300px;width: 250px;position: relative  ;display: inline-block;text-align: center;font-size: 20px;left: 10px">
+                    <img src="/aaa/img/zao.png" alt="" style="height: 230px;width: 230px;border-radius: 50px">
+                    <li><strong> 红 枣 </strong></li>
+                    <li><strong>特价xx/500g</strong></li>
+                </div>
+                <button href="#" style="font-size: 20px;display: inline-block;position: relative;top: 90px;right: 120px;border-radius: 10px;background:rgba(97,130,237,0.5)">
+                    <a href="/Login" style="text-decoration: none;color: black">一键下单！</a></button>
+                <div style="height: 280px;width: 120px;position: relative  ;display: inline-block;font-size: 12px;left: 270px;bottom: 270px;font-family: 微軟正黑體;word-wrap: break-word;text-indent: 2em">
+                    <strong>富含碳水化合物、纤维素、多种维生素（包括维生素C、维生素A、维生素E、维生素K和B族维生素）以及多种矿物质（如钙、铁、镁、锌等）。有助于提供能量、促进消化系统健康、增强免疫系统功能、维护视力、皮肤健康、保护细胞免受损伤等，对于骨骼健康、血液循环、免疫功能和神经传导也具有重要作用。</strong>
+                </div>
+            </div>
+            <div style="height: 400px;width: 420px;position: relative  ;display: inline-block;bottom: 200px">
+                <div style="width:420px;height: 320px;background: rgba(222,222,222,0.22);position: relative;border-radius: 50px">
+                        <div style="width: 356px;height: 317px;position: relative;display: inline-block; ;left: 100px; overflow: hidden">
+                            <div id="uDiv" class="richContent richContent0" style="font-size: 17px; position: absolute;">
+                                <p style="text-align:center;line-height:2.1em;">
+                                    <span style="font-size:18px;">最新</span>
+                                    <span style="color:#2C8FEA;font-size:18px;">李小姐 131****1256</span>
+                                    <span style="font-size:18px;">刚刚购买！</span></p>
+                                <p style="text-align:center;line-height:2.1em;"><span style="font-size:18px;">最新</span><span
+                                        style="color:#2C8FEA;font-size:18px;">王女士 131****1554</span><span style="font-size:18px;">刚刚购买！</span>
+                                </p>
+                                <p style="text-align:center;line-height:2.1em;"><span style="font-size:18px;">最新</span><span
+                                        style="color:#2C8FEA;font-size:18px;">沈先生 158****1956</span><span style="font-size:18px;">刚刚购买！</span>
+                                </p>
+                                <p style="text-align:center;line-height:2.1em;"><span style="font-size:18px;">最新</span><span
+                                        style="color:#2C8FEA;font-size:18px;">苏女士 180****1456</span><span style="font-size:18px;">刚刚购买！</span>
+                                </p>
+                                <p style="text-align:center;line-height:2.1em;"><span style="font-size:18px;">最新</span><span
+                                        style="color:#2C8FEA;font-size:18px;">宋先生 180****2356</span><span style="font-size:18px;">刚刚购买！</span>
+                                </p>
+                                <p style="text-align:center;line-height:2.1em;"><span style="font-size:18px;">最新</span><span
+                                        style="color:#2C8FEA;font-size:18px;">何先生 150****4526</span><span style="font-size:18px;">刚刚购买！</span>
+                                </p>
+                                <p style="text-align:center;line-height:2.1em;"><span style="font-size:18px;">最新</span><span
+                                        style="color:#2C8FEA;font-size:18px;">刘女士 152****3638</span><span style="font-size:18px;">刚刚购买！</span>
+                                </p>
+                                <p style="text-align:center;line-height:2.1em;"><span style="font-size:18px;">最新</span><span
+                                        style="color:#2C8FEA;font-size:18px;">张先生 152****3696</span><span style="font-size:18px;">刚刚购买！</span>
+                                </p>
+                                <p style="text-align:center;line-height:2.1em;"><span style="font-size:18px;">最新</span><span
+                                        style="color:#2C8FEA;font-size:18px;">李小姐 131****1256</span><span style="font-size:18px;">刚刚购买！</span>
+                                </p>
+                                <p style="text-align:center;line-height:2.1em;"><span style="font-size:18px;">最新</span><span
+                                        style="color:#2C8FEA;font-size:18px;">王女士 131****1554</span><span style="font-size:18px;">刚刚购买！</span>
+                                </p>
+                                <p style="text-align:center;line-height:2.1em;"><span style="font-size:18px;">最新</span><span
+                                        style="color:#2C8FEA;font-size:18px;">沈先生 158****1956</span><span style="font-size:18px;">刚刚购买！</span>
+                                </p>
+                                <p style="text-align:center;line-height:2.1em;"><span style="font-size:18px;">最新</span><span
+                                        style="color:#2C8FEA;font-size:18px;">苏女士 180****1456</span><span style="font-size:18px;">刚刚购买！</span>
+                                </p>
+                                <p style="text-align:center;line-height:2.1em;"><span style="font-size:18px;">最新</span><span
+                                        style="color:#2C8FEA;font-size:18px;">宋先生 180****2356</span><span style="font-size:18px;">刚刚购买！</span>
+                                </p>
+                                <p style="text-align:center;line-height:2.1em;"><span style="font-size:18px;">最新</span><span
+                                        style="color:#2C8FEA;font-size:18px;">何先生 150****4526</span><span style="font-size:18px;">刚刚购买！</span>
+                                </p>
+                                <p style="text-align:center;line-height:2.1em;"><span style="font-size:18px;">最新</span><span
+                                        style="color:#2C8FEA;font-size:18px;">刘女士 152****3638</span><span style="font-size:18px;">刚刚购买！</span>
+                                </p>
+                                <p style="text-align:center;line-height:2.1em;"><span style="font-size:18px;"></span></p>
+                                <p style="line-height:2.1em;text-align:center;"><span style="font-size:18px;">最新</span><span
+                                        style="color:#2C8FEA;font-size:18px;">李小姐 131****1256</span><span style="font-size:18px;">刚刚购买！</span>
+                                </p>
+                                <p style="line-height:2.1em;text-align:center;"><span style="font-size:18px;">最新</span><span
+                                        style="color:#2C8FEA;font-size:18px;">王女士 131****1554</span><span style="font-size:18px;">刚刚购买！</span>
+                                </p>
+                                <p style="line-height:2.1em;text-align:center;"><span style="font-size:18px;">最新</span><span
+                                        style="color:#2C8FEA;font-size:18px;">沈先生 158****1956</span><span style="font-size:18px;">刚刚购买！</span>
+                                </p>
+                                <p style="line-height:2.1em;text-align:center;"><span style="font-size:18px;">最新</span><span
+                                        style="color:#2C8FEA;font-size:18px;">苏女士 180****1456</span><span style="font-size:18px;">刚刚购买！</span>
+                                </p>
+                                <p style="line-height:2.1em;text-align:center;"><span style="font-size:18px;">最新</span><span
+                                        style="color:#2C8FEA;font-size:18px;">宋先生 180****2356</span><span style="font-size:18px;">刚刚购买！</span>
+                                </p>
+                                <p style="line-height:2.1em;text-align:center;"><span style="font-size:18px;">最新</span><span
+                                        style="color:#2C8FEA;font-size:18px;">何先生 150****4526</span><span style="font-size:18px;">刚刚购买！</span>
+                                </p>
+                                <p style="line-height:2.1em;text-align:center;"><span style="font-size:18px;">最新</span><span
+                                        style="color:#2C8FEA;font-size:18px;">刘女士 152****3638</span><span style="font-size:18px;">刚刚购买！</span>
+                                </p>
+                                <p style="line-height:2.1em;text-align:center;"><span style="font-size:18px;">最新</span><span
+                                        style="color:#2C8FEA;font-size:18px;">张先生 152****3696</span><span style="font-size:18px;">刚刚购买！</span>
+                                </p>
+                                <p style="line-height:2.1em;text-align:center;"><span style="font-size:18px;">最新</span><span
+                                        style="color:#2C8FEA;font-size:18px;">李小姐 131****1256</span><span style="font-size:18px;">刚刚购买！</span>
+                                </p>
+                                <p style="line-height:2.1em;text-align:center;"><span style="font-size:18px;">最新</span><span
+                                        style="color:#2C8FEA;font-size:18px;">王女士 131****1554</span><span style="font-size:18px;">刚刚购买！</span>
+                                </p>
+                                <p style="line-height:2.1em;text-align:center;"><span style="font-size:18px;">最新</span><span
+                                        style="color:#2C8FEA;font-size:18px;">沈先生 158****1956</span><span style="font-size:18px;">刚刚购买！</span>
+                                </p>
+                                <p style="line-height:2.1em;text-align:center;"><span style="font-size:18px;">最新</span><span
+                                        style="color:#2C8FEA;font-size:18px;">苏女士 180****1456</span><span style="font-size:18px;">刚刚购买！</span>
+                                </p>
+                                <p style="line-height:2.1em;text-align:center;"><span style="font-size:18px;">最新</span><span
+                                        style="color:#2C8FEA;font-size:18px;">宋先生 180****2356</span><span style="font-size:18px;">刚刚购买！</span>
+                                </p>
+                                <p style="line-height:2.1em;text-align:center;"><span style="font-size:18px;">最新</span><span
+                                        style="color:#2C8FEA;font-size:18px;">何先生 150****4526</span><span style="font-size:18px;">刚刚购买！</span>
+                                </p>
+                                <p style="line-height:2.1em;text-align:center;"><span style="font-size:18px;">最新</span><span
+                                        style="color:#2C8FEA;font-size:18px;">刘女士 152****3638</span><span style="font-size:18px;">刚刚购买！</span>
+                                </p></div>
+                        </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="scroll-to-top" onclick="scrollToTop()">🚀</div>
+<div class="dark-mode-toggle" id="darkModeToggle">🌙</div>
+<div style="width: 100%;height: 230px;background: rgba(81,160,222,0.54);position: relative;">
+    <div style="width: 900px;height: 230px;position: center;">
+        <div style="width: 640px;height: 40px;position: center;font-size:14px;color: #000000 ;">
+            <a style="text-decoration: none" href="/">首页</a>
+            <a style="text-decoration: none" href="/Main">关于我们</a>
+            <a style="text-decoration: none" href="/Main">产品中心</a>
+            <a style="text-decoration: none" href="/Main">客服中心</a>
+            <a style="text-decoration: none" href="/Main">合作加盟</a>
+            <a style="text-decoration: none" href="/Main">资质证书</a>
+            <a style="text-decoration: none" href="/Main">意见反馈</a>
+            <a style="text-decoration: none" href="/Main">联系我们</a>
+        </div>
+        <br>
+        <div style="display: inline-block;width: 425px;height: 160px;position: absolute;left: 440px;">
+            <div style="width: 425px;height: 27px;font-size: 10px;color: #000000">山东省Fox Medical购物网站</div>
+            <div style="width: 425px;height: 27px;font-size: 10px;color: #000000">招商热线：195-507-423-27</div>
+            <div style="width: 425px;height: 27px;font-size: 10px;color: #000000">企业邮箱：845104594@qq.com</div>
+            <div style="width: 425px;height: 27px;font-size: 10px;color: #000000">联系地址：山东省淄博市周村区北郊镇</div>
+            <div style="width: 425px;height: 27px;font-size: 10px;color: #000000">©2024 山东省淄博市临淄区 鲁ICP备2333333333号</div>
+        </div>
+        <div style="width: 160px;height: 160px;display: inline-block;top: 50px;left: 990px;position: absolute;">
+            <img src="/aaa/img/erwei.png" alt="">
+        </div>
+        <div style="top: 200px;position: absolute">
+            <span style="font-size: 8px;">友情链接：</span>
+            <a style="font-size: 8px" href="/Main">Fox_Medical</a>
+            <a style="font-size: 8px" href="/Main">联系我们</a>
+        </div>
+    </div>
+</div>
+<script>
+    window.onscroll = function() {
+
+        scrollFunction();
+        //window.onscroll事件监听器：当页面发生滚动时，会触发scrollFunction函数。
+    };
+    function scrollFunction() {
+        if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+            document.querySelector(".navbar").style.top = "0";
+        } else {
+            document.querySelector(".navbar").style.top = "-50px";
+        }
+        //scrollFunction函数：根据页面滚动的位置，控制导航栏的显示和隐藏。如果页面滚动的距离超过200像素，导航栏会显示在页面顶部（top: 0），否则导航栏会隐藏在页面顶部之外（top: -50px）。
+
+        if (document.body.scrollTop > 1500 || document.documentElement.scrollTop > 1500) {
+            document.querySelector(".scroll-to-top").style.display = "block";
+        } else {
+            document.querySelector(".scroll-to-top").style.display = "none";
+        }
+    }
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+    function toggleSidebar() {
+        var sidebar = document.querySelector(".sidebar");
+        if (sidebar.style.left === "-300px") {
+            sidebar.style.left = "0";
+        } else {
+            sidebar.style.left = "-300px";
+        }
+    }
+    function hideSidebar() {
+        var sidebar = document.querySelector(".sidebar");
+        sidebar.style.left = "-300px";
+    }
+    function scrollToTheme(themeId) {
+        var themeElement = document.getElementById(themeId);
+        themeElement.scrollIntoView({ behavior: 'smooth' });
+    }
+    //定位div界面
+    /* //////////////////////////////////////////////////////// */
+    const Pictures = document.querySelectorAll('.Pictures');
+    Pictures.forEach(Picture => {
+        Picture.addEventListener('mouseenter', function() {
+            Picture.classList.add('right');
+        });
+        Picture.addEventListener('mouseleave', function() {
+            Picture.classList.remove('right');
+        });
+    });
+    /*   //////////////////////////////////////////////////////// */
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const body = document.body;
+    darkModeToggle.addEventListener('click', function() {
+        body.classList.toggle('dark-mode');
+    });
+    const uDiv = document.getElementById('uDiv');
+
+    const slideMove1 = (element) => {
+        const p = element.getElementsByTagName('p');//获取div下所有的p
+        element.innerHTML = element.innerHTML + element.innerHTML;//li下的内容进行想加
+        element.style.height = p[0].offsetHeight * p.length + 'px';//ul的宽度等于每个li的宽度乘以所有li的长度
+        const speed = 2
+
+        //主方法
+        function move() {
+//如果上横向滚动了长度一半之后,回到初始位置
+            if (element.offsetTop < -element.offsetHeight / speed) {
+                element.style.top = '0'
+            }
+//如果向下横向滚动的距离大于0 就让他的位置回到一半
+            if (element.offsetTop > 0) {
+                element.style.top = -element.offsetHeight / speed + 'px';
+            }
+//oUl.style.left = oUl.offsetLeft-2+'px';//进行左横向滚动
+            element.style.top = element.offsetTop + speed + 'px';//进行上纵向滚动
+        }
+
+        //调用方法
+        let timer = setInterval(move, 50)
+        //鼠标指向的时候 暂停
+        element.onmouseover = function () {
+            clearInterval(timer);
+        }
+        //鼠标离开之后 继续滚动
+        element.onmouseout = function () {
+            timer = setInterval(move, 50)
+        }
+    }
+    slideMove1(uDiv);
+    // *******************************************文本交互👆*********************************
+    /* //////////////////////////////////////////////////////// */
+    document.body.style.overscrollBehaviorY = "contain";
+    //这行代码是用来设置页面在滚动到顶部或底部时的行为，contain值表示在滚动到边界时将阻止继续滚动。这有助于页面的滚动体验。
+    document.addEventListener('click', function(event) {
+        if (!event.target.closest('.sidebar') && !event.target.closest('.navbar') && !event.target.closest('.scroll-to-top')) {
+            hideSidebar();
+        }
+    });
+    //控制变量，点击侧边栏、导航栏以及右下角的方块之外的主页任意区域，侧边栏将隐藏至原始位置
+</script>
+</body>
+</html>

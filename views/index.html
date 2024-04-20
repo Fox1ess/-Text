@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="/bbb/jquery/dist/jquery.js"></script>
+    <link rel="shortcut icon" href="/aaa/img/toplogo.png">
+    <title>Fox医药购物网站</title>
+    <style>
+        * {
+            margin: 0 auto 0;
+            padding: 0;
+
+        }
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            position: relative;
+            background-color: #ffdd41;
+            background-image: linear-gradient(to bottom, #ffdd41, #4ccf72);
+            transition: background-color 0.5s, background-image 0.5s, color 0.5s;
+            /* 设置整个页面的过渡效果 */
+        }
+        body.dark-mode {
+            background-color: rgba(49, 49, 49, 0.63);
+            background-image: linear-gradient(to bottom, rgba(49, 49, 49, 0.63), rgba(59, 236, 182, 0.08));
+            color: #ffffff;
+        }        /* 夜间模式下的样式 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #333;
+            padding: 10px 0;
+            text-align: center;
+            color: #d13636;
+            Z-index:10;
+            transition: top 0.3s;
+                /*↑过渡效果的持续时间为0.x秒*/
+        }
+        .dark-mode-toggle {
+
+            width: 50px;
+            height: 50px;
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            background-color: #333;
+            color: #fff;
+            border-radius: 25px;
+            cursor: pointer;
+            z-index: 10;
+            line-height: 50px;
+            text-align: center;
+
+        }
+        .dark-mode-toggle:hover {
+            background: #555;
+        }
+        .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50px;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            line-height: 50px;
+            cursor: pointer;
+            display: none;
+            z-index:10
+        }
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -200px;
+            width: 200px;
+            height: 100%;
+            background:linear-gradient(to bottom, rgba(92, 211, 183, 0.6), rgba(196, 246, 70, 0.6));
+            color: white;
+            transition: left 0.5s;
+            z-index: 1;
+        }
+        .SidebarTheme{
+            height: 100%;
+            width: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 40px;
+
+        }
+      #theme11{height: 20%;}
+      #theme22{height: 20%;}
+      #theme33{height: 20%;}
+      #theme44{height: 20%;}
+      #theme55{;height: 20%;}
+    .side-button {
+        width: 40px;
+        height:30px;
+        left:10px;
+
+        display: inline-block;
+        position: absolute;
+    }
+    .login-button{
+        width: 40px;
+        height:30px;
+        right:0px;
+        display: inline-block;
+        position: absolute;
+    }
+      .theme {
+            height: 100vh;
+            width:1450px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 40px;
+          margin: 50px auto 0px;
+          padding: 0;
+          border-radius: 100px;
+          z-index:2;
+        }
+        #theme1 { background-color: rgba(23, 23, 23, 0.65); }
+        #theme2 { background-color: rgba(23, 23, 32, 0.65); }
+        #theme3 { background-color: rgba(23,23,48,0.65); }
+        #theme4 { background-color: rgba(23,23,64,0.65); }
+        #theme5 { background-color: rgba(23,23,80,0.65); }
+        .Picture{
+            height: 150px;
+            width: 150px;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0);
+            position: absolute;
+            Z-index:3;
+            transition:all 100s;
+
+
+        }
+        #Picture1{top:-340px;position:relative}
+        #Picture2{top:-340px;position:relative}
+        #Picture3{top:-340px;position:relative}
+        #Picture4{top:-340px;position:relative}
+        #Picture5{top:-340px;position:relative}
+        .Pictures{transition: transform 0.3s ease-in-out;
+        }
+        .Pictures.right {transform: translateX(120px) ;
+        }
+        .ThemePrice{
+            top: -120px;
+            right:0px;
+            position:relative;
+            text-decoration: none;
+            color: rgba(239, 236, 236, 0.56);
+            font-size: 30px;
+        }
+        .Main{
+            height: 500px;
+            width: 1000px;
+            z-index: 3;
+            background:linear-gradient(to right, rgba(131, 134, 131, 0.50), rgba(49, 48, 47, 0.50));
+            display: flex;
+            top:200px;
+            position: center;
+            border-radius: 25px;
+        }
+    </style>
+  </head>
+    <body>
+    <div class="navbar">
+        <strong>Fox医药购物网站</strong>
+        <div class="side-button" onclick="toggleSidebar()" ><img src="/aaa/img/List.png" alt="" style="height: 30px;width: 30px"></div>
+        <div class="login-button"><a href="/Login"><img src="/aaa/img/Login.png" alt="" style="height: 30px;width: 30px" ></a></div>
+    </div>
+    <div class="sidebar">
+        <div id="theme11" class="SidebarTheme" onclick="scrollToTheme('theme1')"><strong>中药区</strong></div>
+        <div id="theme22" class="SidebarTheme" onclick="scrollToTheme('theme2')"><strong>西药区</strong></div>
+        <div id="theme33" class="SidebarTheme" onclick="scrollToTheme('theme3')"><strong>外用药区</strong></div>
+        <div id="theme44" class="SidebarTheme" onclick="scrollToTheme('theme4')"><strong>名贵药材</strong></div>
+        <div id="theme55" class="SidebarTheme" onclick="scrollToTheme('theme5')"><strong>医疗器械区</strong></div>
+    </div>
+    <div id="theme1" class="theme">
+      <div id="Picture1" class="Picture"><img class="Pictures" src="/aaa/img/zhongyao.png" alt="" style="height: 150px;width: 150px;border-radius:50px ;left: 150px;position: relative ;z-index: 2">
+          <a class="ThemePrice" href="" ><strong>中药区</strong></a>
+      </div>
+        <div class="Main">
+            <div style="height: 410px;width: 870px;position: relative  ;margin: auto">
+                <div style="height: 400px;width:420px;position: relative  ;display: inline-block">
+                    <div style="height: 300px;width: 250px;position: relative  ;display: inline-block;text-align: center;font-size: 20px;left: 10px">
+                        <img src="/aaa/img/zao.png" alt="" style="height: 230px;width: 230px;border-radius: 50px">
+                       <li><strong> 红 枣 </strong></li>
+                        <li><strong>特价xx/500g</strong></li>
+                    </div>
+                    <button href="" style="font-size: 20px;display: inline-block;position: relative;top: 90px;right: 120px;border-radius: 10px;background:rgba(97,130,237,0.5)">
+                        <a href="/Main" style="text-decoration: none;color: black">查看详情</a></button>
+                    <div style="height: 280px;width: 120px;position: relative  ;display: inline-block;font-size: 12px;left: 270px;bottom: 270px;font-family: 微軟正黑體;word-wrap: break-word;text-indent: 2em">
+                         <strong>富含碳水化合物、纤维素、多种维生素（包括维生素C、维生素A、维生素E、维生素K和B族维生素）以及多种矿物质（如钙、铁、镁、锌等）。有助于提供能量、促进消化系统健康、增强免疫系统功能、维护视力、皮肤健康、保护细胞免受损伤等，对于骨骼健康、血液循环、免疫功能和神经传导也具有重要作用。</strong>
+                    </div>
+                </div>
+                <div style="height: 400px;width: 420px;position: relative  ;display: inline-block;bottom: 64px">
+                    <div style="height: 300px;width: 250px;position: relative  ;display: inline-block;text-align: center;font-size: 20px;left: 10px">
+                        <img src="/aaa/img/he.png" alt="" style="height: 230px;width: 230px;border-radius: 50px" >
+                        <li><strong>何首乌 </strong></li>
+                        <li><strong>特价xx/500g</strong></li>
+                    </div>
+                    <button href="" style="font-size: 20px;display: inline-block;position: relative;top: 90px;right: 120px;border-radius: 10px;background:rgba(97,130,237,0.5)">
+                        <a href="/Main" style="text-decoration: none;color: black">查看详情</a></button>
+                    <div style="height: 280px;width: 120px;position: relative  ;display: inline-block;font-size: 12px;left: 270px;bottom: 270px;font-family: 微軟正黑體;word-wrap: break-word;text-indent: 2em">
+                       <strong>何首乌是一种中药材，具有多种功效，包括解毒、通便、降血脂等。其泡水饮用有助于降低胆固醇、预防动脉硬化，并对结核杆菌有抑制作用。此外，何首乌还可促进肠道蠕动，预防便秘，但可能引起轻微腹泻，建议患有腹泻的人慎用。 </strong>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="theme2" class="theme">
+        <div id="Picture2" class="Picture"><img class="Pictures" src="/aaa/img/xiyao.png" alt="" style="height: 150px;width: 150px;border-radius:50px;left: 150px;position: relative;z-index: 2">
+            <a class="ThemePrice" href="" ><strong>西药区</strong></a>
+        </div>
+        <div class="Main">
+            <div style="height: 410px;width: 870px;position: relative  ;margin: auto">
+                <div style="height: 400px;width:420px;position: relative  ;display: inline-block;bottom: 48px">
+                    <div style="height: 300px;width: 250px;position: relative  ;display: inline-block;text-align: center;font-size: 20px;left: 10px">
+                        <img src="/aaa/img/a.png" alt="" style="height: 230px;width: 230px;border-radius: 50px">
+                        <li><strong> 阿莫西林胶囊 </strong></li>
+                        <li><strong>特价xx/盒</strong></li>
+                    </div>
+                    <button href="" style="font-size: 20px;display: inline-block;position: relative;top: 90px;right: 120px;border-radius: 10px;background:rgba(97,130,237,0.5)">
+                        <a href="/Main" style="text-decoration: none;color: black">查看详情</a></button>
+                    <div style="height: 280px;width: 120px;position: relative  ;display: inline-block;font-size: 12px;left: 270px;bottom: 270px;font-family: 微軟正黑體;word-wrap: break-word;text-indent: 2em">
+                        <strong>阿莫西林是一种广谱抗生素，通常被用来治疗呼吸道感染、尿路感染、皮肤感染、牙龈感染等多种病症。</strong>
+                    </div>
+                </div>
+                <div style="height: 400px;width: 420px;position: relative  ;display: inline-block;">
+                    <div style="height: 300px;width: 250px;position: relative  ;display: inline-block;text-align: center;font-size: 20px;left: 10px">
+                        <img src="/aaa/img/yan.png" alt="" style="height: 230px;width: 230px;border-radius: 50px" >
+                        <li><strong>盐酸舍曲林片 </strong></li>
+                        <li><strong>特价xx/盒</strong></li>
+                    </div>
+                    <button href="" style="font-size: 20px;display: inline-block;position: relative;top: 90px;right: 120px;border-radius: 10px;background:rgba(97,130,237,0.5)">
+                        <a href="/Main" style="text-decoration: none;color: black">查看详情</a></button>
+                    <div style="height: 280px;width: 120px;position: relative  ;display: inline-block;font-size: 12px;left: 270px;bottom: 270px;font-family: 微軟正黑體;word-wrap: break-word;text-indent: 2em">
+                        <strong>属于选择性五羟色胺再摄取抑制剂（SSRI）类，主要用于治疗抑郁症和强迫症。药物起效时间在连续服用2-4周后出现，也可用于治疗社交恐惧症和创伤后应激障碍。 </strong>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div id="theme3" class="theme">
+        <div id="Picture3" class="Picture"><img class="Pictures" src="/aaa/img/waiyong.png" alt="" style="height: 150px;width: 150px;border-radius:50px;left: 150px;position: relative;z-index: 2">
+            <a class="ThemePrice" href="" ><strong>外用药区</strong></a>
+        </div>
+        <div class="Main">
+            <div style="height: 410px;width: 870px;position: relative  ;margin: auto">
+                <div style="height: 400px;width:420px;position: relative  ;display: inline-block;bottom: 48px">
+                    <div style="height: 300px;width: 250px;position: relative  ;display: inline-block;text-align: center;font-size: 20px;left: 10px">
+                        <img src="/aaa/img/dian.png" alt="" style="height: 230px;width: 230px;border-radius: 50px">
+                        <li><strong>碘 伏</strong></li>
+                        <li><strong>特价xx/瓶</strong></li>
+                    </div>
+                    <button href="" style="font-size: 20px;display: inline-block;position: relative;top: 90px;right: 120px;border-radius: 10px;background:rgba(97,130,237,0.5)">
+                        <a href="/Main" style="text-decoration: none;color: black">查看详情</a></button>
+                    <div style="height: 280px;width: 120px;position: relative  ;display: inline-block;font-size: 12px;left: 270px;bottom: 270px;font-family: 微軟正黑體;word-wrap: break-word;text-indent: 2em">
+                        <strong>碘伏是一种广泛应用于临床的消毒剂，由于不含酒精，刺激性较小。除了用于皮肤切口消毒和手术外，还可以用于粘膜消毒，如口唇、眼部和生殖器。在某些情况下，碘伏也可用于肠道切缘消毒。</strong>
+                    </div>
+                </div>
+                <div style="height: 400px;width: 420px;position: relative  ;display: inline-block">
+                    <div style="height: 300px;width: 250px;position: relative  ;display: inline-block;text-align: center;font-size: 20px;left: 10px">
+                        <img src="/aaa/img/jiu.png" alt="" style="height: 230px;width: 230px;border-radius: 50px" >
+                        <li><strong>酒 精</strong></li>
+                        <li><strong>特价xx/瓶</strong></li>
+                    </div>
+                    <button href="" style="font-size: 20px;display: inline-block;position: relative;top: 90px;right: 120px;border-radius: 10px;background:rgba(97,130,237,0.5)">
+                        <a href="/Main" style="text-decoration: none;color: black">查看详情</a></button>
+                    <div style="height: 280px;width: 120px;position: relative  ;display: inline-block;font-size: 12px;left: 270px;bottom: 270px;font-family: 微軟正黑體;word-wrap: break-word;text-indent: 2em">
+                        <strong>医用酒精是一种消毒用品，含有70%乙醇，具有强烈消毒性能，可用于皮肤清洁消毒、器械和空气表面清洁，有效杀灭病原体和细菌。具有消毒和杀菌作用，可用于手术前、注射、静脉输液等操作部位消毒，抑制细菌病毒生长和繁殖，防止交叉感染。 </strong>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="theme4" class="theme">
+        <div id="Picture4" class="Picture"><img class="Pictures" src="/aaa/img/minggui.png" alt="" style="height: 150px;width: 150px;border-radius:50px;left: 150px;position: relative;z-index: 2">
+            <a class="ThemePrice" href="" ><strong>名贵药材</strong></a>
+        </div>
+        <div class="Main">
+            <div style="height: 410px;width: 870px;position: relative  ;margin: auto">
+                <div style="height: 400px;width:420px;position: relative  ;display: inline-block;bottom: 32px">
+                    <div style="height: 300px;width: 250px;position: relative  ;display: inline-block;text-align: center;font-size: 20px;left: 10px">
+                        <img src="/aaa/img/ren.png" alt="" style="height: 230px;width: 230px;border-radius: 50px">
+                        <li><strong>人 参</strong></li>
+                        <li><strong>特价xx/500g</strong></li>
+                    </div>
+                    <button href="" style="font-size: 20px;display: inline-block;position: relative;top: 90px;right: 120px;border-radius: 10px;background:rgba(97,130,237,0.5)">
+                        <a href="/Main" style="text-decoration: none;color: black">查看详情</a></button>
+                    <div style="height: 280px;width: 120px;position: relative  ;display: inline-block;font-size: 12px;left: 270px;bottom: 270px;font-family: 微軟正黑體;word-wrap: break-word;text-indent: 2em">
+                        <strong>性平、味甘、微苦，微温。归脾、肺经。功效：大补元气，复脉固脱，补脾益肺，生津止渴，安神益智。</strong>
+                    </div>
+                </div>
+                <div style="height: 400px;width: 420px;position: relative  ;display: inline-block">
+                    <div style="height: 300px;width: 250px;position: relative  ;display: inline-block;text-align: center;font-size: 20px;left: 10px">
+                        <img src="/aaa/img/lu.png" alt="" style="height: 230px;width: 230px;border-radius: 50px" >
+                        <li><strong>鹿 茸</strong></li>
+                        <li><strong>特价xx/500g</strong></li>
+                    </div>
+                    <button href="" style="font-size: 20px;display: inline-block;position: relative;top: 90px;right: 120px;border-radius: 10px;background:rgba(97,130,237,0.5)">
+                        <a href="/Main" style="text-decoration: none;color: black">查看详情</a></button>
+                    <div style="height: 280px;width: 120px;position: relative  ;display: inline-block;font-size: 12px;left: 270px;bottom: 270px;font-family: 微軟正黑體;word-wrap: break-word;text-indent: 2em">
+                        <strong>鹿茸对健康有多种益处，包括强身健体、降低血压、增强免疫力等。但需注意禁忌，如不宜与茶、水杨酸类同食，感冒发热时不宜服用。 </strong>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="theme5" class="theme">
+        <div id="Picture5" class="Picture"><img class="Pictures" src="/aaa/img/qixie.png" alt="" style="height: 150px;width: 150px;border-radius:50px;left: 150px;position: relative;z-index: 2">
+            <a class="ThemePrice" href="" ><strong>医疗器械区</strong></a>
+        </div>
+        <div class="Main">
+            <div style="height: 410px;width: 870px;position: relative  ;margin: auto">
+                <div style="height: 400px;width:420px;position: relative  ;display: inline-block;bottom: 32px">
+                    <div style="height: 300px;width: 250px;position: relative  ;display: inline-block;text-align: center;font-size: 20px;left: 10px">
+                        <img src="/aaa/img/guai.png" alt="" style="height: 230px;width: 230px;border-radius: 50px">
+                        <li><strong> 拐 杖 </strong></li>
+                        <li><strong>特价xx/副</strong></li>
+                    </div>
+                    <button href="" style="font-size: 20px;display: inline-block;position: relative;top: 90px;right: 120px;border-radius: 10px;background:rgba(97,130,237,0.5)">
+                        <a href="/Main" style="text-decoration: none;color: black">查看详情</a></button>
+                    <div style="height: 280px;width: 120px;position: relative  ;display: inline-block;font-size: 12px;left: 270px;bottom: 270px;font-family: 微軟正黑體;word-wrap: break-word;text-indent: 2em">
+                        <strong>拐杖是一种重要的医疗康复辅助用具，其中手杖主要用于轻度需要,例如老年人或登山者，手杖不属于残疾人用品,肘杖属于中度下肢残疾人用品。</strong>
+                    </div>
+                </div>
+                <div style="height: 400px;width: 420px;position: relative  ;display: inline-block">
+                    <div style="height: 300px;width: 250px;position: relative  ;display: inline-block;text-align: center;font-size: 20px;left: 10px">
+                        <img src="/aaa/img/lun.png" alt="" style="height: 230px;width: 230px;border-radius: 50px" >
+                        <li><strong> 轮 椅 </strong></li>
+                        <li><strong>特价xx/辆</strong></li>
+                    </div>
+                    <button href="" style="font-size: 20px;display: inline-block;position: relative;top: 90px;right: 120px;border-radius: 10px;background:rgba(97,130,237,0.5)">
+                        <a href="/Main" style="text-decoration: none;color: black">查看详情</a></button>
+                    <div style="height: 280px;width: 120px;position: relative  ;display: inline-block;font-size: 12px;left: 270px;bottom: 270px;font-family: 微軟正黑體;word-wrap: break-word;text-indent: 2em">
+                        <strong>长时间久坐轮椅的糖尿病患者和老年人易患褥疮，可通过在座椅上加气垫或乳胶垫来分散压力。此外，即使有站立能力，脑中风患者因平衡功能受损，也建议使用轮椅以避免跌倒伤害。 </strong>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="scroll-to-top" onclick="scrollToTop()">🚀</div>
+    <div class="dark-mode-toggle" id="darkModeToggle">🌙</div>
+    <div style="width: 100%;height: 230px;background: rgba(81,160,222,0.54);position: relative;">
+        <div style="width: 900px;height: 230px;position: center;">
+            <div style="width: 640px;height: 40px;position: center;font-size:14px;color: #000000 ;">
+                <a style="text-decoration: none" href="/">首页</a>
+                <a style="text-decoration: none" href="/Main">关于我们</a>
+                <a style="text-decoration: none" href="/Main">产品中心</a>
+                <a style="text-decoration: none" href="/Main">客服中心</a>
+                <a style="text-decoration: none" href="/Main">合作加盟</a>
+                <a style="text-decoration: none" href="/Main">资质证书</a>
+                <a style="text-decoration: none" href="/Main">意见反馈</a>
+                <a style="text-decoration: none" href="/Main">联系我们</a>
+            </div>
+            <br>
+            <div style="display: inline-block;width: 425px;height: 160px;position: absolute;left: 440px;">
+                <div style="width: 425px;height: 27px;font-size: 10px;color: #000000">山东省Fox Medical购物网站</div>
+                <div style="width: 425px;height: 27px;font-size: 10px;color: #000000">招商热线：195-507-423-27</div>
+                <div style="width: 425px;height: 27px;font-size: 10px;color: #000000">企业邮箱：845104594@qq.com</div>
+                <div style="width: 425px;height: 27px;font-size: 10px;color: #000000">联系地址：山东省淄博市周村区北郊镇</div>
+                <div style="width: 425px;height: 27px;font-size: 10px;color: #000000">©2024 山东省淄博市临淄区 鲁ICP备2333333333号</div>
+            </div>
+            <div style="width: 160px;height: 160px;display: inline-block;top: 50px;left: 990px;position: absolute;">
+                <img src="/aaa/img/erwei.png" alt="">
+            </div>
+            <div style="top: 200px;position: absolute">
+                <span style="font-size: 8px;">友情链接：</span>
+                <a style="font-size: 8px" href="/Main">Fox_Medical</a>
+                <a style="font-size: 8px" href="/Main">联系我们</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        window.onscroll = function() {
+
+            scrollFunction();
+            //window.onscroll事件监听器：当页面发生滚动时，会触发scrollFunction函数。
+        };
+        function scrollFunction() {
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                document.querySelector(".navbar").style.top = "0";
+            } else {
+                document.querySelector(".navbar").style.top = "-50px";
+            }
+            //scrollFunction函数：根据页面滚动的位置，控制导航栏的显示和隐藏。如果页面滚动的距离超过200像素，导航栏会显示在页面顶部（top: 0），否则导航栏会隐藏在页面顶部之外（top: -50px）。
+
+            if (document.body.scrollTop > 1500 || document.documentElement.scrollTop > 1500) {
+                document.querySelector(".scroll-to-top").style.display = "block";
+            } else {
+                document.querySelector(".scroll-to-top").style.display = "none";
+            }
+        }
+            function scrollToTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+        }
+        function toggleSidebar() {
+            var sidebar = document.querySelector(".sidebar");
+            if (sidebar.style.left === "-300px") {
+                sidebar.style.left = "0";
+            } else {
+                sidebar.style.left = "-300px";
+            }
+        }
+        function hideSidebar() {
+            var sidebar = document.querySelector(".sidebar");
+            sidebar.style.left = "-300px";
+        }
+        function scrollToTheme(themeId) {
+            var themeElement = document.getElementById(themeId);
+            themeElement.scrollIntoView({ behavior: 'smooth' });
+        }
+            //定位div界面
+        /* //////////////////////////////////////////////////////// */
+        const Pictures = document.querySelectorAll('.Pictures');
+        Pictures.forEach(Picture => {
+        Picture.addEventListener('mouseenter', function() {
+            Picture.classList.add('right');
+        });
+        Picture.addEventListener('mouseleave', function() {
+            Picture.classList.remove('right');
+    });
+        });
+        /*   //////////////////////////////////////////////////////// */
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+        darkModeToggle.addEventListener('click', function() {
+            body.classList.toggle('dark-mode');
+        });
+        /* //////////////////////////////////////////////////////// */
+        document.body.style.overscrollBehaviorY = "contain";
+        //这行代码是用来设置页面在滚动到顶部或底部时的行为，contain值表示在滚动到边界时将阻止继续滚动。这有助于页面的滚动体验。
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.sidebar') && !event.target.closest('.navbar') && !event.target.closest('.scroll-to-top')) {
+                hideSidebar();
+            }
+        });
+        //控制变量，点击侧边栏、导航栏以及右下角的方块之外的主页任意区域，侧边栏将隐藏至原始位置
+    </script>
+    </body>
+</html>
